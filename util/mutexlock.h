@@ -19,6 +19,8 @@ namespace leveldb {
 //     MutexLock l(&mu_);       // mu_ is an instance variable
 //     ... some complex code, possibly with multiple return paths ...
 //   }
+// 
+// 互斥体 RAII 辅助类。构造时锁定互斥体，析构函数时解锁互斥体
 
 class SCOPED_LOCKABLE MutexLock {
  public:
@@ -31,6 +33,8 @@ class SCOPED_LOCKABLE MutexLock {
  private:
   port::Mutex *const mu_;
   // No copying allowed
+  // 
+  // 禁止 拷贝/赋值
   MutexLock(const MutexLock&);
   void operator=(const MutexLock&);
 };

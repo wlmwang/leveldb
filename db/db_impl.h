@@ -23,6 +23,7 @@ class Version;
 class VersionEdit;
 class VersionSet;
 
+// DB 实现类
 class DBImpl : public DB {
  public:
   DBImpl(const Options& options, const std::string& dbname);

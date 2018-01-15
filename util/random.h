@@ -12,12 +12,17 @@ namespace leveldb {
 // A very simple random number generator.  Not especially good at
 // generating truly random bits, but good enough for our needs in this
 // package.
+// 
+// 一个非常简单的随机数发生器。不是特别擅长于生成真正的随机位，但对于 level 中的
+// 需求已经足够了
 class Random {
  private:
   uint32_t seed_;
  public:
   explicit Random(uint32_t s) : seed_(s & 0x7fffffffu) {
     // Avoid bad seeds.
+    // 
+    // 避免不好的种子
     if (seed_ == 0 || seed_ == 2147483647L) {
       seed_ = 1;
     }
@@ -45,15 +50,22 @@ class Random {
   }
   // Returns a uniformly distributed value in the range [0..n-1]
   // REQUIRES: n > 0
+  // 
+  // 返回范围 [0..n-1] 内随机值
   uint32_t Uniform(int n) { return Next() % n; }
 
   // Randomly returns true ~"1/n" of the time, and false otherwise.
   // REQUIRES: n > 0
+  // 
+  // 随机返回 true ~"1/n" 的时间，否则返回 false
   bool OneIn(int n) { return (Next() % n) == 0; }
 
   // Skewed: pick "base" uniformly from range [0,max_log] and then
   // return "base" random bits.  The effect is to pick a number in the
   // range [0,2^max_log-1] with exponential bias towards smaller numbers.
+  // 
+  // 偏斜：从范围 [0,max_log] 中统一挑选 "base"，然后返回 "base" 随机位。效果是
+  // 选择范围 [0,2^max_log-1] 中指数偏向较小数字的数字
   uint32_t Skewed(int max_log) {
     return Uniform(1 << Uniform(max_log + 1));
   }

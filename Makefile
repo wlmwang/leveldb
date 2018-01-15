@@ -7,7 +7,9 @@
 # to switch between compilation modes.
 
 # (A) Production use (optimized mode)
-OPT ?= -O2 -DNDEBUG
+# 编译调试模式
+#OPT ?= -O2 -DNDEBUG
+OPT ?= -ggdb3
 # (B) Debug mode, w/ full line-level debugging symbols
 # OPT ?= -g2
 # (C) Profiling mode: opt, but w/debugging symbols

@@ -12,6 +12,7 @@
 
 namespace leveldb {
 
+// 类似 murmur hash 哈希算法
 extern uint32_t Hash(const char* data, size_t n, uint32_t seed);
 
 }

@@ -9,19 +9,20 @@
 
 namespace leveldb {
 
+// 数据库行为的控制选项，构造函数
 Options::Options()
-    : comparator(BytewiseComparator()),
+    : comparator(BytewiseComparator()),   // 按字节顺序的比较器
       create_if_missing(false),
       error_if_exists(false),
       paranoid_checks(false),
-      env(Env::Default()),
+      env(Env::Default()),                // env环境对象
       info_log(NULL),
-      write_buffer_size(4<<20),
+      write_buffer_size(4<<20),           // 4MB
       max_open_files(1000),
       block_cache(NULL),
       block_size(4096),
       block_restart_interval(16),
-      compression(kSnappyCompression),
+      compression(kSnappyCompression),    // Snappy 压缩算法
       filter_policy(NULL) {
 }
 

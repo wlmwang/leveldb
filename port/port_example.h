@@ -6,6 +6,10 @@
 // of the types/operations/etc. that should be defined by a platform
 // specific port_<platform>.h file.  Use this file as a reference for
 // how to port this package to a new platform.
+// 
+// 一个包含要移植到新平台所必须要提供哪些操作接口规范的说明文档。本文件并不对类型/操作
+// 等具体实现。应该由平台特定的 port_<platform>.h 文件定义。使用此文件作为如何将此程
+// 序包移植到新平台的参考
 
 #ifndef STORAGE_LEVELDB_PORT_PORT_EXAMPLE_H_
 #define STORAGE_LEVELDB_PORT_PORT_EXAMPLE_H_
@@ -23,6 +27,8 @@ static const bool kLittleEndian = true /* or some other expression */;
 // ------------------ Threading -------------------
 
 // A Mutex represents an exclusive lock.
+// 
+// 互斥体代表独占锁
 class Mutex {
  public:
   Mutex();
@@ -42,6 +48,7 @@ class Mutex {
   void AssertHeld();
 };
 
+// 条件变量
 class CondVar {
  public:
   explicit CondVar(Mutex* mu);
@@ -66,12 +73,16 @@ class CondVar {
 //      static void Initializer() { ... do something ...; }
 //      ...
 //      port::InitOnce(&init_control, &Initializer);
+// 
+// 线程安全初始化函数
 typedef intptr_t OnceType;
 #define LEVELDB_ONCE_INIT 0
 extern void InitOnce(port::OnceType*, void (*initializer)());
 
 // A type that holds a pointer that can be read or written atomically
 // (i.e., without word-tearing.)
+// 
+// 一种持有可以原子读取或写入的指针的类型
 class AtomicPointer {
  private:
   intptr_t rep_;
@@ -127,6 +138,9 @@ extern bool Snappy_Uncompress(const char* input_data, size_t input_length,
 // If heap profiling is not supported, returns false.
 // Else repeatedly calls (*func)(arg, data, n) and then returns true.
 // The concatenation of all "data[0,n-1]" fragments is the heap profile.
+// 
+// 如果堆分析不受支持，则返回 false。否则重复调用 (*func)(arg, data, n)，然后
+// 返回 true。所有 "data[0,n-1]" 片段的连接是堆配置文件
 extern bool GetHeapProfile(void (*func)(void*, const char*, int), void* arg);
 
 }  // namespace port

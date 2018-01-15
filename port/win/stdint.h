@@ -3,6 +3,8 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
 // MSVC didn't ship with this file until the 2010 version.
+// 
+// 直到 2010 年版本，MSVC 才附带此文件
 
 #ifndef STORAGE_LEVELDB_PORT_WIN_STDINT_H_
 #define STORAGE_LEVELDB_PORT_WIN_STDINT_H_

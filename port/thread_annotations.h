@@ -8,6 +8,8 @@
 // Some environments provide custom macros to aid in static thread-safety
 // analysis.  Provide empty definitions of such macros unless they are already
 // defined.
+// 
+// 某些环境提供自定义宏来帮助进行静态线程安全分析。提供这些宏的空的定义，除非它们已经被定义
 
 #ifndef EXCLUSIVE_LOCKS_REQUIRED
 #define EXCLUSIVE_LOCKS_REQUIRED(...)
